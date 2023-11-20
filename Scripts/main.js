@@ -74,11 +74,38 @@ class Ball {
       }
     }
   }
-};
+}
 
 const balls = [];
-while (balls.length < 4000000) {
-  const size = random(10, 20);
+while (balls.length < 25) {
+  // const size = random (10,20);
+  const ball = new Ball(
+    //Generar posición en x de forma aleatoria para esta bola en el lienzo
+    random(0 + size, width - random),
+    random(0 + size, height - random),
+    //Velocidad en la dirección de x se establece de forma aleatoria entre -7 y 7
+    random(-7, 7),
+    random(-7, 7),
+    randomRGB(),
+    random(10, 20)
+  );
 
-  const ball = new Ball();
+  balls.push(ball);
 }
+
+// Función que define el bucle principal del programa
+const loop = () =>{
+    // Establece fondo semitransparente
+    ctx.fillStyle = `rgba(0,0,0, 0.25)`
+    ctx.fillRect(0,0, width, height)
+
+    for (const ball of balls) {
+        ball.draw() // Dibuja la pelota
+        ball.update() // Actualiza posición de la pelota
+        ball.collisionDetect() // verificar si colisiona con otras pelotas
+    }
+
+    requestAnimationFrame(loop); // Solicitar al navegador que llame a la función "loop"
+}
+
+loop(); // Inicia el bucle principal
