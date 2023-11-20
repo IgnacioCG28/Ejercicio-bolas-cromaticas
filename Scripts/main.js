@@ -1,28 +1,28 @@
-const canvas = document.querySelector("canvas")
-const ctx = canvas.getContext("2d")
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
 
 //Averiguar el ancho y el alto del template
-const width = (canvas.width = window.innerWidth)
-const height = (canvas.height = window.innerHeight)
+const width = (canvas.width = window.innerWidth);
+const height = (canvas.height = window.innerHeight);
 
 //Número random entre un minimo y máximo
 const random = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min
-}
+};
 // Número RGB random usando número random entre 0 y 255
 const randomRGB = () => {
   return `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
-}
+};
 
 class Ball {
 
   constructor(x, y, velX, velY, color, size) {
-    this.x = x
-    this.y = y
-    this.velX = velX
-    this.velY = velY
-    this.color = color
-    this.size = size
+    this.x = x;
+    this.y = y;
+    this.velX = velX;
+    this.velY = velY;
+    this.color = color;
+    this.size = size;
   }
 
   // Creación de dibujar (el molde) una bola con métodos propios de 2d en canvas
@@ -79,14 +79,17 @@ class Ball {
 
 const balls = [];
 
-
+let qty = parseInt(prompt("Número de bolas"));
+  
 // Función que define el bucle principal del programa
 const loop = () => {
   // Establece fondo semitransparente
   ctx.fillStyle = `rgba(0,0,0, 0.25)`;
   ctx.fillRect(0, 0, width, height);
   
-  while (balls.length < 25) {
+  
+
+  while (balls.length < qty) {
     const size = random(10, 20)
     const ball = new Ball(
       //Generar posición en x de forma aleatoria para esta bola en el lienzo
