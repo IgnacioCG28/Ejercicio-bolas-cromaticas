@@ -45,21 +45,40 @@ class Ball {
       //Borde izquierdo
       this.velX = Math.abs(this.velX);
     }
-
     // Choque vertical
-
     if (this.y + this.size >= height) {
       this.velY = -Math.abs(this.velY);
     }
     if (this.y - this.size <= 0) {
       this.velY = Math.abs(this.velY);
     }
+
+    // Actualiza las coordenadas de la pelota según las velocidades actuales.
+    this.x += this.velX;
+    this.y += this.velY;
   }
 
+  collisionDetect() {
+    for (const ball of balls) {
+      // Verificar que la bola actual no es la misma que la bola de la iteración
+      if (!(this === ball)) {
+        const dx = this.x - ball.x;
+        const dy = this.y - ball.y;
+      }
 
+      // Calcular la distancia entre la pelota actual y la pelota de la iteración
+      const distance = Math.sqrt(dx * dx + dy * dy);
 
+      if (distance < this.size + ball.size) {
+        ball.color = this.color = randomRGB();
+      }
+    }
+  }
+};
 
+const balls = [];
+while (balls.length < 4000000) {
+  const size = random(10, 20);
 
-
-  
+  const ball = new Ball();
 }
