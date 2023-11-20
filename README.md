@@ -1,4 +1,4 @@
-# Ejercicio-exa
+# Ejercicio bolas aleatorias (entra en exámen)
 
 *** Ejemplo de aplicación de Objetos de alto nivel en JS como objetos nativos***
 
