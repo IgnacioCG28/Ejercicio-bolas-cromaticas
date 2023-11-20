@@ -11,9 +11,16 @@ const random = (min, max) => {
 };
 // Número RGB random usando número random entre 0 y 255
 const randomRGB = () => {
-    return `rgb(${random(0,255)}, ${random(0,255)}, ${random(0,255)})`
+  return `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`;
 };
 
-class Ball{
-
-};
+class Ball {
+  constructor(x, y, velX, velY, color, size) {
+    this.x = x;
+    this.y = y;
+    this.velX = velX;
+    this.velY = velY;
+    this.color = color;
+    this.size = size;
+  }
+}
